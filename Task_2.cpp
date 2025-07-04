@@ -1,40 +1,51 @@
 #include <iostream>
 using namespace std;
 
+// Function for each operation
+double add(double a, double b) { return a + b; }
+double subtract(double a, double b) { return a - b; }
+double multiply(double a, double b) { return a * b; }
+double divide(double a, double b) {
+    if (b == 0) {
+        cout << "❌ Division by zero is not allowed.\n";
+        return 0;
+    }
+    return a / b;
+}
 int main() {
     double num1, num2;
-    char operation;
+    char op;
 
-    // Input
+    cout << "🧮 Basic Calculator\n";
     cout << "Enter first number: ";
     cin >> num1;
 
-    cout << "Enter an operator (+, -, *, /): ";
-    cin >> operation;
+    cout << "Enter operator (+, -, *, /): ";
+    cin >> op;
 
     cout << "Enter second number: ";
     cin >> num2;
 
-    // Operation and Output
-    switch (operation) {
+    double result;
+
+    // Use switch to choose operation
+    switch (op) {
         case '+':
-            cout << "Result: " << num1 + num2 << endl;
+            result = add(num1, num2);
             break;
         case '-':
-            cout << "Result: " << num1 - num2 << endl;
+            result = subtract(num1, num2);
             break;
         case '*':
-            cout << "Result: " << num1 * num2 << endl;
+            result = multiply(num1, num2);
             break;
         case '/':
-            if (num2 != 0)
-                cout << "Result: " << num1 / num2 << endl;
-            else
-                cout << "Error: Division by zero is not allowed." << endl;
+            result = divide(num1, num2);
             break;
         default:
-            cout << "Invalid operator!" << endl;
+            cout << "⚠️ Invalid operator!" << endl;
+            return 1;
     }
-
+    cout << "🧾 Result: " << result << endl;
     return 0;
 }
